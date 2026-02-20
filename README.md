@@ -22,7 +22,7 @@ GUI 製作器（可產生綁定指定訊息/設定的 EXE）：
 python app.py --gui
 ```
 
-GUI 內可輸出 `marquee_tts_build.py`，並選擇是否立即執行 PyInstaller 打包。若不立即打包，可在 Windows 手動執行：
+GUI 內可直接把圖形化設定輸出成應用程式（EXE）。預設會立即執行 PyInstaller 打包；若取消勾選，也會先輸出 `marquee_tts_build.py`：
 
 ```bash
 pyinstaller --onefile --noconsole --name MarqueeTTS marquee_tts_build.py
@@ -40,6 +40,23 @@ python app.py "指定內容" \
   --tts-repeat 2 \
   --tts-interval-minutes 1 \
   --loops 2
+```
+
+## 把 `python app.py --gui` 變成 EXE
+
+如果你要的是「雙擊就直接開 GUI 製作器」，建議打包 `gui_launcher.py`：
+
+```bash
+pip install pyinstaller
+pyinstaller --onefile --noconsole --name MarqueeTTS_GUI gui_launcher.py
+```
+
+產生後執行：`dist/MarqueeTTS_GUI.exe`（Windows 會顯示為 `dist\MarqueeTTS_GUI.exe`）。
+
+如果你是打包 `app.py`，也可以在執行 EXE 時加參數：
+
+```bash
+MarqueeTTS.exe --gui
 ```
 
 ## 產生 EXE (Windows)
