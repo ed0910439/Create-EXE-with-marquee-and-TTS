@@ -1,4 +1,4 @@
-gitignore# --- 虛擬環境 (Virtual Environments) ---
+# --- 虛擬環境 (Virtual Environments) ---
 # 這是最建議排除的，避免像你截圖中出現的大量套件警告
 .venv/
 venv/
