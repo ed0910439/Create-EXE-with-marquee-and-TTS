@@ -42,6 +42,23 @@ python app.py "指定內容" \
   --loops 2
 ```
 
+## 把 `python app.py --gui` 變成 EXE
+
+如果你要的是「雙擊就直接開 GUI 製作器」，建議打包 `gui_launcher.py`：
+
+```bash
+pip install pyinstaller
+pyinstaller --onefile --noconsole --name MarqueeTTS_GUI gui_launcher.py
+```
+
+產生後執行：`dist/MarqueeTTS_GUI.exe`（Windows 會顯示為 `dist\MarqueeTTS_GUI.exe`）。
+
+如果你是打包 `app.py`，也可以在執行 EXE 時加參數：
+
+```bash
+MarqueeTTS.exe --gui
+```
+
 ## 產生 EXE (Windows)
 
 請在 Windows 上執行（注意是 `pip install pyinstaller`，不是 `pip install -r PyInstaller`）：
