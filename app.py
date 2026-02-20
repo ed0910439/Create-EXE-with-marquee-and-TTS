@@ -233,7 +233,7 @@ def launch_gui() -> None:
     loops_var = tk.StringVar(value="2")
     output_dir_var = tk.StringVar(value=str(Path.cwd()))
     exe_name_var = tk.StringVar(value="MarqueeTTS")
-    build_now_var = tk.BooleanVar(value=False)
+    build_now_var = tk.BooleanVar(value=True)
 
     fields = [
         ("公告內容", message_var),
@@ -270,7 +270,7 @@ def launch_gui() -> None:
     status_var = tk.StringVar(value="請設定參數後按開始或產生 EXE。")
     tk.Label(root, textvariable=status_var, fg="#666666").grid(row=len(fields), column=0, columnspan=2, pady=8)
 
-    tk.Checkbutton(root, text="立即打包 EXE (需安裝 PyInstaller)", variable=build_now_var).grid(
+    tk.Checkbutton(root, text="輸出時直接打包成 EXE (需安裝 PyInstaller)", variable=build_now_var).grid(
         row=len(fields) + 1,
         column=0,
         columnspan=2,
@@ -350,11 +350,11 @@ def launch_gui() -> None:
                 status_var.set("找不到 PyInstaller，請先 pip install pyinstaller。")
                 return
             if result.returncode == 0:
-                status_var.set(f"打包完成，EXE 位於 {output_dir / 'dist'}")
+                status_var.set(f"打包完成，應用程式位於 {output_dir / 'dist'}")
             else:
                 status_var.set("打包失敗，請檢查 PyInstaller 輸出。")
         else:
-            status_var.set("已產生打包腳本。請在 Windows 執行 PyInstaller 指令。")
+            status_var.set("已產生打包腳本 marquee_tts_build.py，可在 Windows 執行 PyInstaller 產生應用程式。")
 
     tk.Button(root, text="開始跑馬燈", command=start_marquee, width=24).grid(
         row=len(fields) + 2,
@@ -362,7 +362,7 @@ def launch_gui() -> None:
         columnspan=2,
         pady=8,
     )
-    tk.Button(root, text="產生 EXE", command=build_exe, width=24).grid(
+    tk.Button(root, text="輸出應用程式 (EXE)", command=build_exe, width=24).grid(
         row=len(fields) + 3,
         column=0,
         columnspan=2,
