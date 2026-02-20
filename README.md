@@ -22,7 +22,7 @@ GUI 製作器（可產生綁定指定訊息/設定的 EXE）：
 python app.py --gui
 ```
 
-GUI 內可輸出 `marquee_tts_build.py`，並選擇是否立即執行 PyInstaller 打包。若不立即打包，可在 Windows 手動執行：
+GUI 內可直接把圖形化設定輸出成應用程式（EXE）。預設會立即執行 PyInstaller 打包；若取消勾選，也會先輸出 `marquee_tts_build.py`：
 
 ```bash
 pyinstaller --onefile --noconsole --name MarqueeTTS marquee_tts_build.py
